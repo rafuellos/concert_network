@@ -1,0 +1,17 @@
+<%= content_tag :div, class: "concert_details" do%> 
+
+      <h3><%= @concert.band %></h3>
+      <h6>Next <%= @concert.date.strftime("%d - %m - %Y") %></h6>
+      <ul>
+        <li><%= @concert.venue %>, <%= @concert.city %></li>
+        <li>Price: <%= @concert.price %>€</li>
+        <li><%= @concert.description %></li>
+      </ul>
+
+<% end %>
+
+<br>
+<%= link_to 'Back to concerts list', front_page_path %>
+<br>
+
+<%= display_flash_message %>

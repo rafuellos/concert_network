@@ -1,0 +1,48 @@
+
+
+<% if @errors.present? %>
+  <ul>
+    <% @errors.each do |error| %>
+      <li>
+        <%= error %>
+      </li>
+    <% end %> 
+  </ul>
+<% end %>
+
+<%= display_flash_message %>
+
+<h1 style="text-align: center">Creating new concert</h2>
+
+<%= form_for @concert do |f|%>
+
+  <div class="new_concert_form">
+    <%= f.label :date %>
+    <%= f.date_field :date %> 
+
+    <%= f.label :band %>
+    <%= f.text_field :band %> 
+
+    <%= f.label :venue %>
+    <%= f.text_field :venue %> 
+    
+    <%= f.label :city %>
+    <%= f.text_field :city %> 
+   
+    <%= f.label :price %>
+    <%= f.text_field :price %> 
+
+    <%= f.label :description %>
+    <%= f.text_field :description %> 
+  </div>
+
+  <div class='create_concert_button'>
+    <%= f.submit "Add the concert and rock'n roll!!!" %>
+  </div>
+
+
+  
+
+<% end %>
+
+<br>

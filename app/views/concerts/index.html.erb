@@ -1,0 +1,57 @@
+<%= content_tag :div, class: "concerts_today" do%> 
+  <table>
+    <th>
+      
+      <td><b>Concert Date</b></td>
+      <td><b>Concert Band</b></td>
+      <td><b>Concert Venue</b></td>
+      <td><b>Concert City</b></td>
+      <td><b>Concert Price</b></td>
+      <td><b>Concert Description</b></td>
+
+   </th>
+
+    
+    <% @concerts_today.each do |concert| %>
+
+    <tr>
+      <td></td>
+      <td><%= concert.date.strftime("%A, %d - %m - %Y")%></td>
+      <td><%= concert.band %></td>
+      <td><%= concert.venue %></td>
+      <td><%= concert.city %></td>
+      <td><%= concert.price %></td>
+      <td><%= concert.description %></td>
+      
+      <td style = "text-align: center">
+        <%= link_to 'Comment', edit_concert_path(concert.id) %>
+      </td>
+
+      <td style = "text-align: center">
+        <%= link_to 'Edit', edit_concert_path(concert.id) %>
+      </td>
+
+    <% end %>
+
+  </tr>
+
+</table>
+
+<% end %>
+
+<%= content_tag :div, class: "concerts_this_month" do%> 
+  <h4>This month's next concerts:</h4>
+  <% @concerts_this_month.each do |concert| %>
+    <%= content_tag :div, class: "conce6ts_this_month" do%> 
+      <h5><%= link_to concert.band, concert_path(concert.id)%> day <%= concert.date.strftime("%d - %m - %Y")%></h5>
+
+    <% end %>
+  <% end %>
+<% end %>
+
+<br>
+<%= link_to 'New Concert', new_concert_path %>
+<br>
+
+<%= display_flash_message %>
+
