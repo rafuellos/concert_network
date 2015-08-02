@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150731094955) do
+ActiveRecord::Schema.define(version: 20150802100715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "concert_id"
+    t.string   "user"
+    t.text     "comment"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+  end
+
+  add_index "comments", ["concert_id"], name: "index_comments_on_concert_id", using: :btree
 
   create_table "concerts", force: :cascade do |t|
     t.text     "band"

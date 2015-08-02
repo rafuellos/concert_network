@@ -2,7 +2,7 @@
   <h4>This month's next concerts:</h4>
   <% @concerts_this_month.each do |concert| %>
     <%= content_tag :div, class: "concerts_this_month" do%> 
-      <h5><%= link_to concert.band, concert_path(concert.id)%> day <%= concert.date.strftime("%d - %m - %Y")%></h5>
+      <p><%= link_to concert.band, concert_path(concert.id)%> day <%= concert.date.strftime("%d - %m - %Y")   %></p>
 
     <% end %>
   <% end %>

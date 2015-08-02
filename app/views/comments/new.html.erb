@@ -1,0 +1,46 @@
+<h2>
+  Create a new comment for the concert:<br>
+   <%= @concert.band %> of <%= @concert.date.strftime("%d - %m - %Y") %> at 
+   <%= @concert.venue %>, <%= @concert.city %>
+</h2>
+
+<% if @errors.present? %>
+  <ul>
+    <% @errors.each do |error| %>
+      <li>
+        <%= error %>
+      </li>
+    <% end %> 
+  </ul>
+<% end %>
+
+<%= display_flash_message %>
+
+
+
+<%= form_for [@concert, @comment] do |f|%>
+
+  <div class="new_concert_form">
+    
+
+    <%= f.label :user %>
+    <%= f.text_field :user %> 
+    <br>
+    <%= f.label :comment %>
+    <%= f.text_area :comment %> 
+
+
+  </div>
+
+  <div class='create_concert_button'>
+    <%= f.submit "Add your comment" %>
+  </div>
+
+
+  
+
+<% end %>
+
+<br>
+<%= link_to 'Back to concert details', concert_path(@concert.id) %>
+<%= link_to 'Back to the list of concerts for today', front_page_path %>
