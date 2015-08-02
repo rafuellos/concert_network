@@ -5,13 +5,27 @@ class ConcertsController < ApplicationController
     
     @concerts_today =  Concert.where(:date => Date.today)
     @concerts_this_month = Concert.order(date: :asc).where(:date => Date.today..Date.today.end_of_month) - @concerts_today
-    #binding.pry
 
-    #@concerts = Concert.show_concerts(50)
 
     if @concerts_today.empty?
       render template: 'concerts/no_concerts'
     end
+    
+  end
+
+  def search_form
+    @concerts_this_month = Concert.order(date: :asc).where(:date => Date.today..Date.today.end_of_month)
+    
+  end
+
+  def search_by_price
+    @concerts = Concert.show_concerts_by_price params[:price]
+    @concerts_this_month = Concert.order(date: :asc).where(:date => Date.today..Date.today.end_of_month)
+
+    if @concerts.empty?
+      render template: 'concerts/no_concerts'
+    end
+    
   end
 
   def show_all_by_month
@@ -69,6 +83,7 @@ class ConcertsController < ApplicationController
       render 'edit'
     end
   end
+
 
   private
   def concert_params

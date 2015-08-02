@@ -1,5 +1,5 @@
 
-<%= content_tag :div, class: "concerts_today col-md-8" do %> 
+<%= content_tag :div, class: "concerts_list col-md-8" do %> 
   <p class="lead bg-danger">Concerts for <%= Date.today.strftime("%Y") %></p>
   <% @concerts.each do |concert| %>
     <div class = 'concert_today_details'>

@@ -7,7 +7,12 @@ class Concert < ActiveRecord::Base
     order(date: :asc).limit(number)
   end
 
-  def select_month(month)
+  def self.show_concerts_by_price(price)
+    where("price < ?", price).order(price: :asc)
+    
+  end
+
+  def self.select_month(month)
     
   end
 end

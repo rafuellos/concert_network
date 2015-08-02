@@ -1,11 +1,12 @@
 <%= content_tag :div, class: "concerts_list col-md-8" do%> 
     
-  <% @concerts_today.each do |concert| %>
+  <p class="lead">Concerts under <%= params[:price] %></p>
+  <% @concerts.each do |concert| %>
     <div class = 'concert_today_details'>
-      <p class="lead">Concerts for <%= Date.today.strftime("%A, %d - %B - %Y") %></p>
       
       <div class = "concert_details col-md-8">
         <p ><%= concert.band %></p>
+        <p ><%= concert.date %></p>
         <p>at <%= concert.venue %>, <%= concert.city %></p>
         <p>Price: <%= concert.price %>€</p>
         <p><%= concert.description %></p>
@@ -37,4 +38,3 @@
 
 
 <%= render 'concerts_layout' %>
-

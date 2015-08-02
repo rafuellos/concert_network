@@ -1,0 +1,28 @@
+<% if @errors.present? %>
+  <ul>
+    <% @errors.each do |error| %>
+      <li>
+        <%= error %>
+      </li>
+    <% end %> 
+  </ul>
+<% end %>
+
+<%= display_flash_message %>
+
+<form action='' method='POST'>
+  <p>
+    <label for= "price">Price under:</label>
+    <input type="text" name="price"><br>
+  </p>
+  <p>
+    <%= button_to "Search concerts!", search_price_under_path %>
+  </p>
+
+</form> 
+
+<br>
+<%= link_to 'Back to the list of concerts for today', front_page_path %>
+
+
+<%= render 'concerts_layout' %>
