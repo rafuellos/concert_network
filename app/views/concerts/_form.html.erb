@@ -12,7 +12,7 @@
 
 <%= display_flash_message %>
 
-<h1 style="text-align: center">Creating new concert</h2>
+
 
 <%= form_for @concert do |f|%>
 
@@ -33,7 +33,7 @@
     <%= f.text_field :price %> 
 
     <%= f.label :description %>
-    <%= f.text_field :description %> 
+    <%= f.text_area :description %> 
   </div>
 
   <div class='create_concert_button'>
@@ -46,3 +46,4 @@
 <% end %>
 
 <br>
+<%= link_to 'Back to the list of concerts for today', front_page_path %>

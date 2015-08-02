@@ -1,20 +1,15 @@
-<%= content_tag :div, class: "concerts_today col-md-8" do%> 
-    
-  <% @concerts_today.each do |concert| %>
+
+<%= content_tag :div, class: "concerts_today col-md-8" do %> 
+  <p class="lead bg-danger">Concerts for <%= Date.today.strftime("%Y") %></p>
+  <% @concerts.each do |concert| %>
     <div class = 'concert_today_details'>
-      <p class="lead">Concerts for <%= Date.today.strftime("%A, %d - %B - %Y") %></p>
-      
       <div class = "concert_details col-md-8">
-        <p ><%= concert.band %></p>
-        <p>at <%= concert.venue %>, <%= concert.city %></p>
-        <p>Price: <%= concert.price %>€</p>
+        <p ><%= concert.band %> at <%= concert.venue %>, <%= concert.city %></p>
+        <p ><%= concert.date.strftime("%A, %d - %m") %>. Price <%= concert.price %>€</p>
         <p><%= concert.description %></p>
       </div>
 
       <div class="col-md-4">
-        <div>
-          <img src="" alt="here comes the photo">
-        </div>
         <div class='concert_details_tools'>
           <p style = "text-align: center">
             <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
@@ -28,7 +23,6 @@
             
         </div>
       </div>
-      
 
     </div>
   <% end %>
@@ -37,4 +31,3 @@
 
 
 <%= render 'concerts_layout' %>
-

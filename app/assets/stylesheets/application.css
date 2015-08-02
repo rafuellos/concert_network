@@ -1,3 +1,58 @@
-// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
-@import "bootstrap-sprockets";
-@import "bootstrap";
+body{
+    overflow-y:scroll;
+}
+@media only screen and (max-width:960px){
+    body{
+        overflow-y:scroll;
+    }
+}
+
+.bg { 
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  /* Preserve aspet ratio */
+  min-width: 100vw;
+  min-height: 100vh;
+  z-index: -1;
+
+}
+
+.header, 
+.footer {
+  min-height: 15vh;
+  background-color: #ddd;
+ 
+}
+
+.header {
+  top: 0;
+  position: fixed;
+  z-index: 6; 
+
+}
+
+.container {
+  position: relative;
+  min-height: 55vh;
+  opacity: 0.95;
+  filter: alpha(opacity= 0.95);
+  padding-top: 15vh;
+  background-color: #eee;
+  overflow: auto;
+  margin-bottom: 5vh;
+  
+}
+
+.footer {
+  position: absolute;
+  z-index: 6;
+  
+  
+}
+
+.concerts_this_month {
+  
+  
+  float: right;
+}

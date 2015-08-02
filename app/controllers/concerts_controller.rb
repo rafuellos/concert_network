@@ -4,7 +4,7 @@ class ConcertsController < ApplicationController
   def index
     
     @concerts_today =  Concert.where(:date => Date.today)
-    @concerts_this_month = Concert.order(date: :asc).where(:date => Date.today + 1.day..(Date.today + 1.day).end_of_month) - @concerts_today
+    @concerts_this_month = Concert.order(date: :asc).where(:date => Date.today..Date.today.end_of_month) - @concerts_today
     #binding.pry
 
     #@concerts = Concert.show_concerts(50)
@@ -13,6 +13,18 @@ class ConcertsController < ApplicationController
       render template: 'concerts/no_concerts'
     end
   end
+
+  def show_all_by_month
+    @concerts = Concert.order(date: :asc)
+    @concerts_today =  Concert.where(:date => Date.today)
+    @concerts_this_month = Concert.order(date: :asc).where(:date => Date.today..Date.today.end_of_month) - @concerts_today
+    
+    if @concerts.empty?
+      render template: 'concerts/no_concerts'
+    end
+    render 'list_by_month'
+  end
+
 
   def show
     unless @concert = Concert.find_by(id: params[:id])

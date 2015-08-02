@@ -1,20 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
   <title>Welcome to the Concert Network!</title>
   <%= stylesheet_link_tag    'application', media: 'all'%>
   <%= javascript_include_tag 'application'%>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
-  <header>
-    <div>This is the header of the concert network</div>
-  </header>
-    <%= yield %>
-  <footer>  
-    <div>This is the footer of the concert network</div>
-  </footer>
-  
+
+  <div>
+    <img src='http://www.aem2.org/wp-content/uploads/2013/03/1187835662_Concert1_1280x1024_13.jpg' class="bg" alt="background">
+  </div>
+
+    <header class="header col-md-12">
+      <div>This is the header of the concert network</div>
+      <div class="dropdown pull-right">
+        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Options <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li><a tabindex="-1"><%= link_to "Today's concert", front_page_path %></a></li>
+          <li><a tabindex="-1"><%= link_to "New concert", new_concert_path %></a></li>
+          <li><a tabindex="-1"><%= link_to "List of Concerts", list_by_month_path %></a></li>
+
+        </ul>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <%= yield %>
+      </div>
+    </div>
+
+    <footer class="footer col-md-8 col-md-offset-2 clearfix" >  
+      <div>This is the footer of the concert network</div>
+    </footer>  
+
+
 </body>
+
 </html>

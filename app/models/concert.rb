@@ -6,4 +6,8 @@ class Concert < ActiveRecord::Base
   def self.show_concerts(number)
     order(date: :asc).limit(number)
   end
+
+  def select_month(month)
+    
+  end
 end
