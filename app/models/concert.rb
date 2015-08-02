@@ -12,7 +12,5 @@ class Concert < ActiveRecord::Base
     
   end
 
-  def self.select_month(month)
-    
-  end
+
 end

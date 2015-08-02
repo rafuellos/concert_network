@@ -13,6 +13,11 @@ class ConcertsController < ApplicationController
     
   end
 
+  def most_commented
+    @concerts = Concert.where("comments_count > ?", 0).order(comments_count: :desc).limit(5)
+    @concerts_this_month = Concert.order(date: :asc).where(:date => Date.today..Date.today.end_of_month)
+  end
+
   def search_form
     @concerts_this_month = Concert.order(date: :asc).where(:date => Date.today..Date.today.end_of_month)
     
@@ -82,6 +87,15 @@ class ConcertsController < ApplicationController
       @errors = @concert.errors.full_messages
       render 'edit'
     end
+  end
+
+  def destroy
+    @concert = Concert.find params[:id]
+
+
+    @concert.destroy
+    redirect_to concerts_path
+    
   end
 
 

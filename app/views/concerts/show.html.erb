@@ -10,6 +10,7 @@
 
 <% end %>
 
+<%= link_to('Delete concert', concert_path(@concert.id), method: :delete, data: {confirm: 'Are you sure'})  %>
 <%= link_to 'Edit this concert', edit_concert_path(@concert.id) %>
 <%= link_to 'Back to concerts list', front_page_path %>
 

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get '/' => 'concerts#index' , as: 'front_page'
   get '/search' => 'concerts#search_form', as: 'search_price' 
   post '/search' => 'concerts#search_by_price', as: 'search_price_under' 
+  get '/most_commented' => 'concerts#most_commented', as: 'most_commented'
   resources :concerts do
     resources :comments
   end
