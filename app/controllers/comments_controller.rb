@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
 
     if @comment.save
       flash[:notice] = 'The comment was created successfully'
-      redirect_to concert_comments_path(@concert.id)
+      redirect_to concert_path(@concert.id)
     else
       @errors = @comment.errors.full_messages
       flash.now[:alert] = "The comment can't be created"
@@ -47,7 +47,7 @@ class CommentsController < ApplicationController
     @comment = @concert.comments.find params[:id]
 
     @comment.destroy
-    redirect_to concert_comments_path(@concert.id)
+    redirect_to concert_path(@concert.id)
     
   end
 

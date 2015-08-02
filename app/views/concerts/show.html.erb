@@ -3,17 +3,53 @@
       <h3><%= @concert.band %></h3>
       <h6>Next <%= @concert.date.strftime("%d - %m - %Y") %></h6>
       <ul>
-        <li><%= @concert.venue %>, <%= @concert.city %></li>
+        <li>At <%= @concert.venue %>, <%= @concert.city %></li>
         <li>Price: <%= @concert.price %>€</li>
         <li><%= @concert.description %></li>
       </ul>
 
 <% end %>
 
-<br>
-<%= link_to 'Edit', edit_concert_path(@concert.id) %>
-<%= link_to 'Comment', new_concert_comment_path(@concert.id) %>
+<%= link_to 'Edit this concert', edit_concert_path(@concert.id) %>
 <%= link_to 'Back to concerts list', front_page_path %>
-<br>
+
+<div class="detailBox">
+  <div class="titleBox">
+    <label class="col-md-8">Comments</label>
+    <form class="" role="form">
+        <div class='create_concert_button'>
+          <%= link_to 'Add your comment', new_concert_comment_path(@concert.id) %>
+        </div>
+    </form>
+  </div>
+
+  <% @comments.each do |comment| %>
+    <div class="actionBox">
+      <ul class="commentList">
+        <li>
+          <div class="commenterImage">
+            <%= image_tag '31-user_icon-1', class: "avatar_comment" %>
+          </div>
+          <div class="commentText">
+        
+            <span class="comment_user"><%= comment.user %> said </span>
+            <span class="date sub-text">
+              <%= comment.created_at.strftime("%d - %m, %Y") %>
+            </span>  
+            <br>
+            <p class=""><%= comment.comment %></p> 
+             
+
+          </div>
+        </li>
+
+      <%= link_to('Delete comment', concert_comment_path(@concert.id, comment.id), method: :delete, data: {confirm: 'Are you sure'})  %>
+      <%= link_to 'Edit', edit_concert_comment_path(@concert.id, comment.id) %>
+  
+      </ul>
+    </div>
+
+  <% end%>
+</div>
 
 <%= display_flash_message %>

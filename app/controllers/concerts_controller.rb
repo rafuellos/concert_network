@@ -27,7 +27,9 @@ class ConcertsController < ApplicationController
 
 
   def show
-    unless @concert = Concert.find_by(id: params[:id])
+    @concert = Concert.find_by(id: params[:id])
+    @comments = @concert.comments
+    unless @concert
       render 'no_concert_found'
     end
   end

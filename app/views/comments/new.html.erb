@@ -18,10 +18,10 @@
 
 
 
-<%= form_for [@concert, @comment] do |f|%>
+<%= form_for [@concert, @comment], :html => {:multipart => true} do |f|%>
 
   <div class="new_concert_form">
-    
+  
 
     <%= f.label :user %>
     <%= f.text_field :user %> 

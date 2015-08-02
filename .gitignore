@@ -12,3 +12,5 @@
 !/log/.keep
 /tmp
 /public/images
+/public/system
+/assets/images
